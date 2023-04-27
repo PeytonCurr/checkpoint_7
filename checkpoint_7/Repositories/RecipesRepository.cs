@@ -56,4 +56,42 @@ WHERE rec.id = @recipeId;
     return recipe;
   }
 
+  internal Recipe Edit(Recipe originalRecipe)
+  {
+    string sql = @"
+    UPDATE recipes rec
+    SET
+      Title = @Title,
+      Instructions = @Instructions,
+      Img = @Img,
+      Category = @Category
+    WHERE id = @id;
+
+    SELECT 
+    rec.*,
+    creator.* 
+    FROM recipes rec
+    JOIN accounts creator ON rec.creatorId = creator.id
+    WHERE rec.id = @id
+    ;";
+    Recipe recipe = _db.Query<Recipe, Account, Recipe>(sql, (rec, creator) =>
+    {
+      rec.Creator = creator;
+      return rec;
+    }, originalRecipe).FirstOrDefault();
+    return recipe;
+  }
+
+  internal int DeSpawn(int recipeId)
+  {
+    string sql = @"
+DELETE
+FROM recipes
+WHERE id = @recipeId
+LIMIT 1
+;";
+
+    int rowsAffected = _db.Execute(sql, new { recipeId });
+    return rowsAffected;
+  }
 }
