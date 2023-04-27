@@ -8,6 +8,18 @@ public class RecipesService
   {
     _repo = repo;
   }
+  internal Recipe Spawn(Recipe recipeData)
+  {
+    int recipeId = _repo.Spawn(recipeData);
+    Recipe recipe = this.GetOne(recipeId);
+    return recipe;
+  }
+
+  internal List<Recipe> GetAll()
+  {
+    List<Recipe> recipes = _repo.GetAll();
+    return recipes;
+  }
 
   internal Recipe GetOne(int recipeId)
   {
@@ -16,10 +28,4 @@ public class RecipesService
     return recipe;
   }
 
-  internal Recipe Spawn(Recipe recipeData)
-  {
-    int recipeId = _repo.Spawn(recipeData);
-    Recipe recipe = this.GetOne(recipeId);
-    return recipe;
-  }
 }
