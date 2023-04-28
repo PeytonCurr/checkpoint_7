@@ -15,4 +15,10 @@ public class IngredientsService
     Ingredient ingredient = _repo.Spawn(ingredientData);
     return ingredient;
   }
+  internal List<Ingredient> GetIngredientsByRecipeId(int recipeId)
+  {
+    List<Ingredient> ingredients = _repo.GetIngredientsByRecipeId(recipeId);
+    if (ingredients == null) throw new Exception($"The Ingredients at ID: {recipeId} do not exist!");
+    return ingredients;
+  }
 }

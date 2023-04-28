@@ -23,4 +23,15 @@ SELECT LAST_INSERT_ID()
     return ingredientData;
   }
 
+  internal List<Ingredient> GetIngredientsByRecipeId(int recipeId)
+  {
+    string sql = @"
+SELECT * 
+FROM ingredients
+WHERE recipeId = @recipeId
+;";
+    List<Ingredient> ingredients = _db.Query<Ingredient>(sql, new { recipeId }).ToList();
+    return ingredients;
+  }
+
 }
