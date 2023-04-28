@@ -13,4 +13,19 @@ public class IngredientsController : ControllerBase
     _ingredientsService = ingredientsService;
     _auth = auth;
   }
+
+  [HttpPost]
+  public ActionResult<List<Ingredient>> Spawn([FromBody] Ingredient ingredientData)
+  {
+    try
+    {
+      Ingredient ingredient = _ingredientsService.Spawn(ingredientData);
+      return Ok(ingredient);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 }
