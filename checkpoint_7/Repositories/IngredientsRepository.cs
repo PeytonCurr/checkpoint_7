@@ -34,4 +34,15 @@ WHERE recipeId = @recipeId
     return ingredients;
   }
 
+  internal int DeSpawn(int ingredientId)
+  {
+    string sql = @"
+DELETE
+FROM ingredients
+WHERE id = @ingredientId
+LIMIT 1
+;";
+    int rowsAffected = _db.Execute(sql, new { ingredientId });
+    return rowsAffected;
+  }
 }

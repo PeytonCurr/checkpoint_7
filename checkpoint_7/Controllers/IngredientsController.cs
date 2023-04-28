@@ -28,4 +28,17 @@ public class IngredientsController : ControllerBase
     }
   }
 
+  [HttpDelete("{ingredientId}")]
+  public ActionResult<string> DeSpawn(int ingredientId)
+  {
+    try
+    {
+      string message = _ingredientsService.DeSpawn(ingredientId);
+      return Ok(message);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }

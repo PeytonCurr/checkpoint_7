@@ -21,4 +21,12 @@ public class IngredientsService
     if (ingredients == null) throw new Exception($"The Ingredients at ID: {recipeId} do not exist!");
     return ingredients;
   }
+
+  internal string DeSpawn(int ingredientId)
+  {
+    int rowsAffected = _repo.DeSpawn(ingredientId);
+    if (rowsAffected == 0) throw new Exception("Delete Failed");
+    if (rowsAffected > 1) throw new Exception("Shes gonna Blow!!!");
+    return $"The Ingredient at ID: {ingredientId} was deleted!";
+  }
 }
