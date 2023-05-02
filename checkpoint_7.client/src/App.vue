@@ -1,6 +1,6 @@
 <template>
-  <Navbar class="nav m-3 rounded" />
-  <main>
+  <main class="container-fluid">
+    <Navbar class="nav m-3 rounded" />
     <router-view />
   </main>
 </template>

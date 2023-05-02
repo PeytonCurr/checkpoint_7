@@ -1,8 +1,11 @@
 <template>
-  <nav class="bg-dark px-3 d-flex align-items-top justify-content-end">
-    <SearchBar class="pt-3 me-2" />
-    <!-- LOGIN COMPONENT HERE -->
-    <Login />
+  <nav class="bg-dark p-3 row">
+    <div class="col-8"></div>
+    <div class="col-4 d-flex justify-content-end">
+      <SearchBar class="me-2" />
+      <!-- LOGIN COMPONENT HERE -->
+      <Login />
+    </div>
   </nav>
 </template>
 

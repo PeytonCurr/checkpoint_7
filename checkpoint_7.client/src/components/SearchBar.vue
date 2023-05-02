@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-5 col-9 p-0">
+  <div class="">
     <form @submit.prevent="" class="d-flex">
       <input class="form-control" type="text" id="search" required placeholder="Search..." minlength="3" maxlength="25">
 
