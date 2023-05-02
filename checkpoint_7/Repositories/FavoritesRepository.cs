@@ -28,10 +28,10 @@ Values
   {
     string sql = @"
 SELECT 
-fav.*
+fav.*,
 rec.*
 FROM favorites fav
-JOIN recipes rec ON fav.recipeId = rec.Id
+JOIN recipes rec ON rec.id = fav.recipeId
 WHERE fav.AccountId = @accountId
 ;";
 

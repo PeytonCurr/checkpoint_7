@@ -39,7 +39,6 @@ public class AccountController : ControllerBase
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       List<Favorite> favorites = _favoritesService.GetAccountFavorites(userInfo.Id);
-      Console.WriteLine("It is hitting the route");
       return Ok(favorites);
     }
     catch (Exception e)
