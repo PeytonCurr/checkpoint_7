@@ -1,13 +1,8 @@
 <template>
-  <header>
-    <Navbar />
-  </header>
+  <Navbar class="nav m-3 rounded" />
   <main>
     <router-view />
   </main>
-   <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
 </template>
 
 <script>
@@ -27,14 +22,14 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-:root{
+:root {
   --main-height: calc(100vh - 32px - 64px);
 }
 
-
-footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
+.nav {
+  min-height: 30vh;
+  background-image: url('../src/assets/img/unsplash_pqJ21tErTgI.png');
+  background-position: center;
+  background-size: cover;
 }
 </style>
