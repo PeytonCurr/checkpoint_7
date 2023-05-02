@@ -7,7 +7,7 @@ public class Favorite
   public int RecipeId { get; set; }
 }
 
-public class MyFavorites : Recipe
+public class MyFavorite : Recipe
 {
   public int FavoriteId { get; set; }
 }

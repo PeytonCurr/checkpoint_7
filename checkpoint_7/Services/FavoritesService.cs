@@ -16,10 +16,10 @@ public class FavoritesService
     return favorite;
   }
 
-  internal List<MyFavorites> GetAccountFavorites(string accountId)
+  internal List<MyFavorite> GetAccountFavorites(string accountId)
   {
-    List<MyFavorites> favorites = _repo.GetAccountFavorites(accountId);
-    return favorites;
+    List<MyFavorite> myFavorite = _repo.GetAccountFavorites(accountId);
+    return myFavorite;
   }
 
   internal Favorite GetOne(int favoriteId)
