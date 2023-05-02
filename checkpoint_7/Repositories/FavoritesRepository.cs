@@ -24,22 +24,38 @@ Values
     return favoriteData;
   }
 
-  internal List<Favorite> GetAccountFavorites(string accountId)
+  internal List<MyFavorites> GetAccountFavorites(string accountId)
   {
     string sql = @"
 SELECT 
 fav.*,
-rec.*
+MyFavorite.*
 FROM favorites fav
-JOIN recipes rec ON rec.id = fav.recipeId
+JOIN recipes MyFavorite ON MyFavorite.id = fav.recipeId
 WHERE fav.AccountId = @accountId
 ;";
 
-    List<Favorite> favorites = _db.Query<Favorite, Recipe, Favorite>(sql, (fav, rec) =>
+    List<MyFavorites> MyFavorites = _db.Query<Favorite, MyFavorites, MyFavorites>(sql, (fav, MyFavorite) =>
     {
-      fav.RecipeId = rec.Id;
-      return fav;
+      MyFavorite.FavoriteId = fav.RecipeId;
+      return MyFavorite;
     }, new { accountId }).ToList();
-    return favorites;
+    return MyFavorites;
+  }
+
+  internal Favorite GetOne(int favoriteId)
+  {
+    string sql = @"
+SELECT *
+FROM favorites
+WHERE id = @favoriteId
+;";
+
+    Favorite favorite = _db.Query<Favorite>(sql, new { favoriteId }).FirstOrDefault();
+    return favorite;
+  }
+
+  internal void DeSpawn(int favoriteId)
+  {
   }
 }

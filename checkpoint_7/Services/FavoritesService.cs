@@ -16,10 +16,23 @@ public class FavoritesService
     return favorite;
   }
 
-  internal List<Favorite> GetAccountFavorites(string accountId)
+  internal List<MyFavorites> GetAccountFavorites(string accountId)
   {
-    List<Favorite> favorites = _repo.GetAccountFavorites(accountId);
+    List<MyFavorites> favorites = _repo.GetAccountFavorites(accountId);
     return favorites;
   }
 
+  internal Favorite GetOne(int favoriteId)
+  {
+    Favorite favorite = _repo.GetOne(favoriteId);
+    return favorite;
+  }
+
+  internal string DeSpawn(int favoriteId, string accountId)
+  {
+    Favorite favorite = this.GetOne(favoriteId);
+    if (favorite.AccountId != accountId) throw new Exception("You don't have authorization to delete this Favorite!");
+    _repo.DeSpawn(favoriteId);
+    return $"The relationship at favoriteId: {favoriteId} has been deleted!";
+  }
 }

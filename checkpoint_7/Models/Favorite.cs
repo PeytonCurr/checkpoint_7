@@ -6,3 +6,8 @@ public class Favorite
   public string AccountId { get; set; }
   public int RecipeId { get; set; }
 }
+
+public class MyFavorites : Recipe
+{
+  public int FavoriteId { get; set; }
+}
