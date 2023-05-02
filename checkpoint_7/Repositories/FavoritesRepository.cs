@@ -57,5 +57,13 @@ WHERE id = @favoriteId
 
   internal void DeSpawn(int favoriteId)
   {
+    string sql = @"
+    DELETE
+    FROM favorites
+    WHERE id = @favoriteId
+    LIMIT 1
+    ;";
+
+    _db.Execute(sql, new { favoriteId });
   }
 }
