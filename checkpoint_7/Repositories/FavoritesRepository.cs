@@ -39,7 +39,7 @@ WHERE fav.AccountId = @accountId
 
     List<MyFavorite> myFavorites = _db.Query<Favorite, MyFavorite, Account, MyFavorite>(sql, (fav, myFavorite, creator) =>
     {
-      myFavorite.FavoriteId = fav.RecipeId;
+      myFavorite.FavoriteId = fav.Id;
       myFavorite.Creator = creator;
       return myFavorite;
     }, new { accountId }).ToList();
