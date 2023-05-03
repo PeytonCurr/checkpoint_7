@@ -1,5 +1,5 @@
 <template>
-  <main class="container-fluid">
+  <main class="container-fluid bg-secondary">
     <Navbar class="nav m-3 rounded" />
     <router-view />
   </main>
