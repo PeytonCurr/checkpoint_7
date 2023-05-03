@@ -1,26 +1,39 @@
 <template>
-  <!-- SECTION FilterBarArea -->
-  <section class="row justify-content-center">
+  <section class="row">
+    <div class="col-12 text-end">
 
-    <!-- STUB FilterBar_Component -->
-    <div
-      class="col-5 d-flex justify-content-around text-success bg-light rounded elevation-3 px-3 py-2 filterBar no-select">
-      <h3 class="mb-0 filters">Home</h3>
-      <h3 class="mb-0 filters">My Recipes</h3>
-      <h3 class="mb-0 filters">Favorites</h3>
+      <!-- SECTION FilterBarArea -->
+      <section class="row justify-content-center">
+
+        <!-- STUB FilterBar_Component -->
+        <div
+          class="col-5 d-flex justify-content-around text-success bg-light rounded elevation-3 px-3 py-2 filterBar no-select">
+          <h3 class="mb-0 filters">Home</h3>
+          <h3 class="mb-0 filters">My Recipes</h3>
+          <h3 class="mb-0 filters">Favorites</h3>
+        </div>
+
+      </section>
+
+
+      <!-- SECTION Recipes -->
+      <section class="row px-4 justify-content-around">
+
+        <div class="col-4 pb-5 px-5" v-for="rec in recipes">
+          <!-- STUB RecipeCard -->
+          <RecipeCardVue :rec="rec" />
+        </div>
+
+      </section>
+
+      <!-- SECTION Add Recipe Button -->
+      <div class="sticky-bottom">
+        <span class="filters rounded-circle bg-success fs-2 p-2 border border-dark me-3"><i
+            class="mdi mdi-plus fs-1"></i></span>
+        <div class="spacing"></div>
+      </div>
+
     </div>
-
-  </section>
-
-
-  <!-- SECTION Recipes -->
-  <section class="row px-4 justify-content-around">
-
-    <div class="col-4 pb-5 px-5" v-for="rec in recipes">
-      <!-- STUB RecipeCard -->
-      <RecipeCardVue :rec="rec" />
-    </div>
-
   </section>
 </template>
 
@@ -86,5 +99,9 @@ export default {
 .filters:active {
   transform: scale(0.95);
   filter: brightness(0.80);
+}
+
+.spacing {
+  min-height: 3vh;
 }
 </style>
