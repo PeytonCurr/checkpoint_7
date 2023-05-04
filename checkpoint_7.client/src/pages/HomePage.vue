@@ -28,10 +28,12 @@
 
       <!-- SECTION Add Recipe Button -->
       <div class="sticky-bottom">
-        <span class="filters rounded-circle bg-success fs-2 p-2 border border-dark me-3"><i
-            class="mdi mdi-plus fs-1"></i></span>
+        <span class="filters rounded-circle bg-success fs-2 p-2 border border-dark me-3" data-bs-toggle="modal"
+          data-bs-target="#modalId"><i class="mdi mdi-plus fs-1"></i></span>
         <div class="spacing"></div>
       </div>
+
+      <Modal />
 
     </div>
   </section>
@@ -43,6 +45,7 @@ import { logger } from '../utils/Logger.js';
 import { recipesService } from '../services/RecipesService.js'
 import { AppState } from '../AppState.js';
 import RecipeCardVue from '../components/RecipeCard.vue'
+import Modal from '../components/Modal.vue';
 
 export default {
   setup() {
@@ -61,7 +64,7 @@ export default {
       recipes: computed(() => AppState.recipes)
     };
   },
-  components: { RecipeCardVue }
+  components: { RecipeCardVue, Modal }
 }
 </script>
 
